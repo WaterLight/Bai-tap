@@ -11,14 +11,18 @@
     <link rel="stylesheet" href="./css/style.css">
     
     <link rel="stylesheet" href="./css/style-header.css">
+    <link rel="stylesheet" href="./css/style-content.css">
+    <link rel="stylesheet" href="./css/style-footer.css">
     
     <title>Hello, world!</title>
   </head>
   <body>
 
+    <!-- ======================== Header ======================== -->
     
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #181412;">
-      <a class="navbar-brand mr-5" href="#">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light" style="background-color: #181412; height: 90px; font-family: 'Helvetica', sans-serif;">
+    
+      <a class="navbar-brand mr-4 ml-3" href="#">
         <img src="./image/logo.png"  alt="logo">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,7 +34,7 @@
         <nav class="navbar navbar-dark" style="background-color: #181412;">
           <a class="navbar-brand mx-4" href="#">
             <span class="mr-3" style=" color: #fae639;">
-              <i class="fas fa-circle"></i>
+              <i class="fas fa-circle "></i>
             </span>
             FEATURED
           </a>
@@ -54,8 +58,43 @@
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
-    </nav>
+  
+  </nav>
 
+  <!-- ======================== Content ======================== -->
+    
+    <div class="content">
+      
+    </div>
+
+
+
+  <!-- ======================== Footer ======================== -->
+  
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #181412;font-family: 'Helvetica',sans-serif; height: 40px;">
+    
+      <a class="navbar-brand ml-5" style="color: #fff; opacity: .4; font-size: .8em;" href="#">
+        Copyright 2018 Personal NP
+      </a>
+      
+
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <!-- Image and text -->
+        <nav class="navbar navbar-dark" style="background-color: #181412; height: 40px; margin-left: 66%;">
+          <a class="navbar-brand mx-4" style="font-size: .9em;" href="#">            
+            Get Personal
+          </a>
+          <a class="navbar-brand mx-4" style="font-size: .9em;" href="#">            
+            Legal
+          </a>
+          <a class="navbar-brand mx-4" style="font-size: .9em;" href="#">            
+            Cookies
+          </a>
+        </nav>     
+      </div> 
+
+  </nav>  
+  
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
