@@ -49,3 +49,7 @@ a.register {
   color: #56d861;
   font-weight: bold;
 }
+
+form.form-inline.my-2.my-lg-0 {
+    margin: 0 110px;
+}
