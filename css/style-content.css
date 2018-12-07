@@ -171,8 +171,9 @@
     position: relative;
     width: 326px;
     z-index: 1;
-
 }
+
+
 .playlist li {
     color: #EEEEEE;
     cursor: pointer;

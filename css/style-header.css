@@ -21,5 +21,19 @@ button.btn.btn-outline-success.my-2.my-sm-0 {
 }
 
 form.form-inline.my-2.my-lg-0 {
-    margin: 0 110px;
+    margin: 0 55px;
+}
+
+.info-user{
+    text-align: center;
+    font-size: 14px;
+}
+
+.info-user a{
+	display: block;
+	color: #FFF;
+}
+
+.info-user a:hover {
+	color: #16e58a;
 }

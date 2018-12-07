@@ -108,7 +108,7 @@
 			<input type="password"  name="kt_matkhau" class="form-control is-valid" placeholder="Nhập lại mật khẩu" required >
 		</div>
 
-		<div style="color:red;" class="mb-2">
+		<div style="color:green;" class="mb-2">
 			<?php			
 				echo $loi["dangky"];
 				echo $loi["kt_matkhau"];
@@ -138,7 +138,10 @@
 		<p class="mt-4 mb-4 text-muted" style="font-size: 15px; opacity: .8;">Copyright 2018-2019</p>
 	</form>
 	
-		
+	<div class="go-home fixed-bottom" style="bottom: 1rem; left: 94%;">
+	    <a href="./index.php"><i class="fas fa-home fa-3x " style="color: #3ea24c;"></i></a>
+	</div>
+
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <?php  

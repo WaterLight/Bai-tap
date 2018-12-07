@@ -49,16 +49,25 @@
           <?php 
             if(isset($_SESSION["taikhoan"]))
             {
-              echo"<a class='navbar-brand mx-4' href='#'>";
-                echo"<span class='mr-3' style='' color: #f573a0;'>";
-                  echo"<i class='fas fa-circle'> "; 
-                  echo"</i>";
-                echo"</span>";
-                echo "Xin chào ".$_SESSION["taikhoan"].", <a href='logout.php'>(Đăng xuất)</a>";
-              echo"</a>";
+                echo"<a class='navbar-brand mx-4' href='./login.php'>";
+                  echo"<span class='mr-3' style=' color: #f573a0;'>";
+                    echo"<i class='fas fa-circle'>"; 
+                    echo"</i>";
+                  echo"</span>";
+                  echo "MyList";
+                echo"</a>";
+              echo "</nav>";
+              echo "</div>";
+
+              echo "<div class='info-user'>";
+                echo"<a href='./admin/admin.php'>";
+        
+                  echo "Xin Chào ".$_SESSION["taikhoan"]." <a href='logout.php'>Đăng xuất</a>";
+                echo"</a>";
+              echo "</div>";
             }
             else
-            {
+            {             
               echo"<a class='navbar-brand mx-4' href='./login.php'>";
                 echo"<span class='mr-3' style=' color: #f573a0;'>";
                   echo"<i class='fas fa-circle'>"; 
@@ -66,14 +75,10 @@
                 echo"</span>";
                 echo "Đăng nhập";
               echo"</a>";
+              echo "</nav>";
+              echo "</div>";
             }      
           ?>
-
-      </nav>      
-
-     </div>
-
-  
   </nav>
 
   <!-- ======================== Content ======================== -->
@@ -147,7 +152,7 @@
                               echo"<div><a id='id-name' href='#'>$data[tenbh]</a></div>";
                               echo"<div class='singer'><a id='id-singer' href='#'>Ca sĩ : $data[tencs]</a></div>";
                             echo"</div>";
-                            echo"<div class='view-count'></div> ";          
+                            echo"<div class='view-count'>12</div> ";          
 
                           echo"</div>";
                         echo"</li>";
@@ -182,7 +187,7 @@
                             echo"<div><a id='id-name' href='#'>$data[tenbh]</a></div>";
                             echo"<div class='singer'><a id='id-singer' href='#'>Ca sĩ : $data[tencs]</a></div>";
                           echo"</div>";
-                          echo"<div class='view-count'></div> ";          
+                          echo"<div class='view-count'>12</div> ";          
 
                         echo"</div>";
                       echo"</li>";
@@ -228,6 +233,9 @@
 
   </nav>  
   
+  <div class="go-home fixed-bottom" style="bottom: 1rem; left: 94%;">
+    <a href="./index.php"><i class="fas fa-home fa-3x " style="color: #3ea24c;"></i></a>
+  </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
