@@ -118,8 +118,9 @@
 		<div class="row">
          	<div class="col-md-3 mb-3">                
                 <select class="custom-select is-valid d-block w-100" required="">
-	                <option value="">Nam</option>		                
+	                <option value="">Sex</option>		                
 	                <option>Nữ</option>
+	                <option>Nam</option>
                 </select>               
             </div>
 			

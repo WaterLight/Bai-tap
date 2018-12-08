@@ -4,7 +4,7 @@
 ?>
     
     <link rel="stylesheet" href="./css/style-header.css">
-    <link rel="stylesheet" href="./css/style-content.css">
+    <link rel="stylesheet" href="./css/index-content.css">
     <link rel="stylesheet" href="./css/style-footer.css">
     
     <title>Trang chủ</title>
@@ -32,18 +32,29 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Image and text -->
         <nav class="navbar navbar-dark" style="background-color: #181412;">
-          <a class="navbar-brand mx-4" href="#">
+
+          <div class="navbar-brand ml-4 mr-3" style="" href="#">
+            <span class="" style=" color: #9befe0; position: relative;top: 2px;">
+              <i class="fas fa-circle"></i>
+            </span>
+            
+              <a class="btn btn-secondary dropdown-toggle abc" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Thể loại
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">Pop</a>
+                <a class="dropdown-item" href="#">HipHop</a>
+                <a class="dropdown-item" href="#">Rock</a>
+                <a class="dropdown-item" href="#">Balad</a>
+              </div>
+            
+          </div>
+
+          <a class="navbar-brand mx-4" href="./music.php">
             <span class="mr-3" style=" color: #fae639;">
               <i class="fas fa-circle "></i>
             </span>
             Bài hát
-          </a>
-
-          <a class="navbar-brand mx-4" href="#">
-            <span class="mr-3" style=" color: #9befe0;">
-              <i class="fas fa-circle"></i>
-            </span>
-            Thể loại
           </a>
           
           <?php 
@@ -82,129 +93,311 @@
   </nav>
 
   <!-- ======================== Content ======================== -->
-    <div class="body">
-      <div class="content">
+  <div class="body">
+    <div style="background: rgb(0,0,0);background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 0%);width: 100%;height: 100%;">
+    <div style="height: 20px; width: 100%"></div>    
+      <div class="container text-center">
+      
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" style=" height: 350px;">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="./image/slider.jpg" border="0"  alt="First slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="./image/slider.jpg" border="0"  alt="Second slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="./image/slider.jpg" border="0"  alt="Third slide">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        
+        <div class="row text-left mt-4">
+          <div class="col-sm-9">
+          <div class="d-flex">
+            <a href="#" style="font-size: 1.7em; color: #FFF;font-weight: bold;margin-right: 10px;">Ablum</a>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb" style="background-color: transparent;font-weight: bold;">
+                <li class="breadcrumb-item"><a href="#">Nghe nhiều</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="#">Mới nhất</a></li>
+              </ol>
+            </nav>
+          </div>
+          <div class="content">
+            <div class="box">
+              <div class="avatar">
+                <div class="overload">
+                  <img src="./image/slider.jpg" alt="">
+                  <span><i class=" fab fa-google-play fa-2x"></i></span>
+                </div>
+              </div>
+              <div class="name">Sự Im Lặng Dễ Chịu</div>
+                <div class="singer">Lê Hiếu</div>                
+            </div>
 
-        <div class="player">
-
-          <div class="cover">
-            <div class="overlay">
-              <img src="./image/play.png" alt="">
+            <div class="box">
+              <div class="avatar">
+                <div class="overload">
+                  <img src="./image/slider.jpg" alt="">
+                  <span><i class=" fab fa-google-play fa-2x"></i></span>
+                </div>
+              </div>
+              <div class="name">Sự Im Lặng Dễ Chịu</div>
+                <div class="singer">Lê Hiếu</div>                
+            </div>
+            <div class="box">
+              <div class="avatar">
+                <div class="overload">
+                  <img src="./image/slider.jpg" alt="">
+                  <span><i class=" fab fa-google-play fa-2x"></i></span>
+                </div>
+              </div>
+              <div class="name">Sự Im Lặng Dễ Chịu</div>
+                <div class="singer">Lê Hiếu</div>                
+            </div>
+            <div class="box">
+              <div class="avatar">
+                <div class="overload">
+                  <img src="./image/slider.jpg" alt="">
+                  <span><i class=" fab fa-google-play fa-2x"></i></span>
+                </div>
+              </div>
+              <div class="name">Sự Im Lặng Dễ Chịu</div>
+                <div class="singer">Lê Hiếu</div>                
+            </div>
+            <div class="box">
+              <div class="avatar">
+                <div class="overload">
+                  <img src="./image/slider.jpg" alt="">
+                  <span><i class=" fab fa-google-play fa-2x"></i></span>
+                </div>
+              </div>
+              <div class="name">Sự Im Lặng Dễ Chịu</div>
+                <div class="singer">Lê Hiếu</div>                
+            </div>
+            <div class="box">
+              <div class="avatar">
+                <div class="overload">
+                  <img src="./image/slider.jpg" alt="">
+                  <span><i class=" fab fa-google-play fa-2x"></i></span>
+                </div>
+              </div>
+              <div class="name">Sự Im Lặng Dễ Chịu</div>
+                <div class="singer">Lê Hiếu</div>                
+            </div>
+            <div class="box">
+              <div class="avatar">
+                <div class="overload">
+                  <img src="./image/slider.jpg" alt="">
+                  <span><i class=" fab fa-google-play fa-2x"></i></span>
+                </div>
+              </div>
+              <div class="name">Sự Im Lặng Dễ Chịu</div>
+                <div class="singer">Lê Hiếu</div>                
+            </div>
+            <div class="box">
+              <div class="avatar">
+                <div class="overload">
+                  <img src="./image/slider.jpg" alt="">
+                  <span><i class=" fab fa-google-play fa-2x"></i></span>
+                </div>
+              </div>
+              <div class="name">Sự Im Lặng Dễ Chịu</div>
+                <div class="singer">Lê Hiếu</div>                
             </div>
           </div>
 
-          <div class="title"></div>
-          <div class="artist"></div>
-          
-          <div class="controls">
-            <div class="play"></div>
-            <div class="pause"></div>
-            <div class="rew"></div>
-            <div class="fwd"></div>
+          <div class="mb-3 mt-2">
+            <a href="#" style="font-size: 1.7em; color: #FFF;font-weight: bold;">The Best</a>
           </div>
-          <div class="volume"></div>
-          <div class="tracker"></div>
-          
+         
+            
+            <div class="row">
+
+              <div class="col-sm-5">
+                <div class="box">
+                  <div class="avatar">
+                    <div class="overload">
+                      <img src="./image/slider.jpg" alt="" style="width: 326px; height: 307px;">
+                      <span><i class=" fab fa-google-play fa-2x"></i></span>
+                    </div>
+                  </div>
+                  <div class="name">The Best Of All</div>                
+                </div>
+              </div>
+
+              <div class="col-sm-7">
+                <div class="content">
+
+                  <div class="box">
+                    <div class="avatar">
+                      <div class="overload">
+                        <img src="./image/slider.jpg" alt="" style="width: 140px;height: 130px;">
+                        <span><i class=" fab fa-google-play fa-2x"></i></span>
+                      </div>
+                    </div>
+                    <div class="name">The Best Of</div>            
+                  </div>
+
+                  <div class="box">
+                    <div class="avatar">
+                      <div class="overload">
+                        <img src="./image/slider.jpg" alt="" style="width: 140px;height: 130px;">
+                        <span><i class=" fab fa-google-play fa-2x"></i></span>
+                      </div>
+                    </div>
+                    <div class="name">The Best Of</div>            
+                  </div>
+
+                  <div class="box">
+                    <div class="avatar">
+                      <div class="overload">
+                        <img src="./image/slider.jpg" alt="" style="width: 140px;height: 130px;">
+                        <span><i class=" fab fa-google-play fa-2x"></i></span>
+                      </div>
+                    </div>
+                    <div class="name">The Best Of</div>            
+                  </div>
+
+                  <div class="box">
+                    <div class="avatar">
+                      <div class="overload">
+                        <img src="./image/slider.jpg" alt="" style="width: 140px;height: 130px;">
+                        <span><i class=" fab fa-google-play fa-2x"></i></span>
+                      </div>
+                    </div>
+                    <div class="name">The Best Of</div>            
+                  </div>
+
+                  <div class="box">
+                    <div class="avatar">
+                      <div class="overload">
+                        <img src="./image/slider.jpg" alt="" style="width: 140px;height: 130px;">
+                        <span><i class=" fab fa-google-play fa-2x"></i></span>
+                      </div>
+                    </div>
+                    <div class="name">The Best Of</div>            
+                  </div>
+
+                  <div class="box">
+                    <div class="avatar">
+                      <div class="overload">
+                        <img src="./image/slider.jpg" alt="" style="width: 140px;height: 130px;">
+                        <span><i class=" fab fa-google-play fa-2x"></i></span>
+                      </div>
+                    </div>
+                    <div class="name">The Best Of</div>            
+                  </div>
+               
+                </div>
+              </div>                
+            </div>           
+          </div>
+
+          <div class="col-sm-3 mb-3" style="">
+            <div class="mb-2">
+              <a href="#" style="font-size: 1.7em; color: #FFF;font-weight: bold;">BXH Bài hát</a>
+            </div>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb mb-1" style="background-color: transparent;font-weight: bold;padding: 0px;">
+                <li class="breadcrumb-item"><a href="#">Việt Nam</a></li>
+                <li class="breadcrumb-item"><a href="#">Âu Mỹ</a></li>
+                <li class="breadcrumb-item"><a href="#">Hàn Quốc</a></li>
+              </ol>
+            </nav>
+
+            <div class="bai-hat-tuan">
+              <div class="number">1</div>
+              <div class="info">
+                <div class="title"><a id="id-name" href="#">Duyên Mình Lỡ</a></div>
+                <div class="singer mb-2"><a id="id-singer" href="#">Hương Tràm</a></div>
+              </div>
+            </div>
+
+            <div class="bai-hat-tuan">
+              <div class="number">1</div>
+              <div class="info">
+                <div class="title"><a id="id-name" href="#">Duyên Mình Lỡ</a></div>
+                <div class="singer mb-2"><a id="id-singer" href="#">Hương Tràm</a></div>
+              </div>
+            </div>
+
+            <div class="bai-hat-tuan">
+              <div class="number">1</div>
+              <div class="info">
+                <div class="title"><a id="id-name" href="#">Duyên Mình Lỡ</a></div>
+                <div class="singer mb-2"><a id="id-singer" href="#">Hương Tràm</a></div>
+              </div>
+            </div>
+
+            <div class="bai-hat-tuan">
+              <div class="number">1</div>
+              <div class="info">
+                <div class="title"><a id="id-name" href="#">Duyên Mình Lỡ</a></div>
+                <div class="singer mb-2"><a id="id-singer" href="#">Hương Tràm</a></div>
+              </div>
+            </div>
+
+            <div class="bai-hat-tuan">
+              <div class="number">1</div>
+              <div class="info">
+                <div class="title"><a id="id-name" href="#">Duyên Mình Lỡ</a></div>
+                <div class="singer mb-2"><a id="id-singer" href="#">Hương Tràm</a></div>
+              </div>
+            </div>
+
+            <div class="bai-hat-tuan">
+              <div class="number">1</div>
+              <div class="info">
+                <div class="title"><a id="id-name" href="#">Duyên Mình Lỡ</a></div>
+                <div class="singer mb-2"><a id="id-singer" href="#">Hương Tràm</a></div>
+              </div>
+            </div>
+
+            <div class="bai-hat-tuan">
+              <div class="number">7</div>
+              <div class="info">
+                <div class="title"><a id="id-name" href="#">Duyên Mình Lỡ</a></div>
+                <div class="singer mb-2"><a id="id-singer" href="#">Hương Tràm</a></div>
+              </div>
+            </div>
+            
+            <div class="bai-hat-tuan">
+              <div class="number">8</div>
+              <div class="info">
+                <div class="title"><a id="id-name" href="#">Duyên Mình Lỡ</a></div>
+                <div class="singer mb-2"><a id="id-singer" href="#">Hương Tràm</a></div>
+              </div>
+            </div>
+
+            <div class="bai-hat-tuan">
+              <div class="number">9</div>
+              <div class="info">
+                <div class="title"><a id="id-name" href="#">Duyên Mình Lỡ</a></div>
+                <div class="singer mb-2"><a id="id-singer" href="#">Hương Tràm</a></div>
+              </div>
+            </div>
+
+          </div> 
+
         </div>
 
-        <div class="viewlist" id="style-1">
-          <ul class="playlist" style="height: 100%;">
-
-              
-
-              <?php  
-                if (isset($_REQUEST['ok'])) 
-                {
-                  // Gán hàm addslashes để chống sql injection
-                  $timkiem = addslashes($_GET['timkiem']);
- 
-                  // Nếu $timkiem rỗng thì báo lỗi, tức là người dùng chưa nhập liệu mà đã nhấn submit.
-                  if (empty($timkiem)) 
-                  {
-                    echo "<p style= 'color:red;'>* Dữ liệu tìm kiếm không được để trống</p>";
-                  } 
-                  else
-                  {
-                    // Dùng câu lênh like trong sql và sứ dụng toán tử % của php để tìm kiếm dữ liệu chính xác hơn.
-                    $sql = "SELECT * FROM baihat WHERE tenbh LIKE '%$timkiem%' OR tencs LIKE '%$timkiem%' OR tenns LIKE '%$timkiem%' OR quocgia LIKE '%$timkiem%' OR theloai LIKE '%$theloai%' ";
- 
-                    // Kết nối sql
-                    require("config/connect.php");
-                    // Thực thi câu truy vấn
-                    $kq = mysqli_query($conn,$sql);
- 
-                    // Đếm số dòng trả về trong sql.
-                    $num = mysqli_num_rows($kq);
- 
-                    // Nếu có kết quả thì hiển thị, ngược lại thì thông báo không tìm thấy kết quả
-                    if ($num > 0 && $timkiem != "") 
-                    {
-                      // Dùng $num để đếm số dòng trả về.
-                      echo "<p style='color:#0000FF;'>$num kết quả trả về với từ khóa <b>$timkiem</b></p>";
-                      $dem=1;
-                      while ($data = mysqli_fetch_assoc($kq))
-                      {
-                        echo"<li audiourl='$data[url]' cover='./cover1.jpg' artist='Imagine Dragons'>";
-                          echo"<div class='bai-hat-tuan'>";
-
-                            echo"<div class='number'>$dem</div>";
-                            echo"<div class='info'>";
-                              echo"<div><a id='id-name' href='#'>$data[tenbh]</a></div>";
-                              echo"<div class='singer'><a id='id-singer' href='#'>Ca sĩ : $data[tencs]</a></div>";
-                            echo"</div>";
-                            echo"<div class='view-count'>12</div> ";          
-
-                          echo"</div>";
-                        echo"</li>";
-                        $dem++;
-                      }
-                    }                 
-                    else 
-                    {
-                      echo"<p style='color:red;'>* Không tìm thấy kết quả!;</p>";
-                    } 
-
-                    //Đóng kết nối với CSDL
-                    mysqli_close($conn);
-                  }
-                }
-                else
-                {
-                  //Mở kết nối với CSDL
-                  require("config/connect.php");
-                  //Thực hiện truy vấn
-                  $sql = "SELECT * FROM baihat WHERE capnhat = 1";
-                  $kq = mysqli_query($conn,$sql);
-                  
-                  $dem=1;  
-                  while ($data = mysqli_fetch_assoc($kq)) 
-                  {
-                    echo"<li audiourl='$data[url]' cover='./cover1.jpg' artist='Imagine Dragons'>";
-                        echo"<div class='bai-hat-tuan'>";
-
-                          echo"<div class='number'>$dem</div>";
-                          echo"<div class='info'>";
-                            echo"<div><a id='id-name' href='#'>$data[tenbh]</a></div>";
-                            echo"<div class='singer'><a id='id-singer' href='#'>Ca sĩ : $data[tencs]</a></div>";
-                          echo"</div>";
-                          echo"<div class='view-count'>12</div> ";          
-
-                        echo"</div>";
-                      echo"</li>";
-                      $dem++;
-                  }
-                  mysqli_close($conn);
-                }
-            ?>
-
-  
-          </ul>
-          <div class="force-overflow"></div>
-        </div>
-        
-      </div>    
     </div>
-
+  </div>
+  </div>
 
 
   <!-- ======================== Footer ======================== -->
@@ -237,15 +430,15 @@
     <a href="./index.php"><i class="fas fa-home fa-3x " style="color: #3ea24c;"></i></a>
   </div>
 
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="./js/jquery-3.3.1.slim.min.js"></script>
-    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>
+    
     
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/main.js"></script>
-    <script src="./js/content.js"></script>
   </body>
 </html>
