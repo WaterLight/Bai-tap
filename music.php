@@ -93,126 +93,133 @@
 
   <!-- ======================== Content ======================== -->
     <div class="body">
-      <div class="content">
-
-        <div class="player">
-
-          <div class="cover">
-            <div class="overlay">
-              <img src="./image/play.png" alt="">
+      <div style="background: rgb(0,0,0);background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 0%);width: 100%;height: 100%;">
+      <div style="height: 20px; width: 100%"></div>
+      <div class="container">
+      <div class="row">
+        <div class="col-sm-9">
+          <div class="player">
+            <div style="background: rgb(0,0,0);background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 0%);width: 100%;height: 100%;">
+            <div class="cover"></div>
+            <div class="title"></div>
+            <div class="artist"></div>
+            
+            <div class="controls">
+              <div class="rew">
+                <i class="fas fa-backward" ></i>
+              </div>
+              <div class="play">
+                <i class="fas fa-play-circle" ></i>
+           
+              </div>
+              <div class="pause">
+                <i class="fas fa-pause-circle" ></i>
+              </div>
+              <div class="fwd">
+                <i class="fas fa-forward" ></i>
+              </div>
+              
+            </div>
             </div>
           </div>
 
-          <div class="title"></div>
-          <div class="artist"></div>
-          
-          <div class="controls">
-            <div class="play"></div>
-            <div class="pause"></div>
-            <div class="rew"></div>
-            <div class="fwd"></div>
-          </div>
-          <div class="volume"></div>
-          <div class="tracker"></div>
-          
-        </div>
+          <div class="viewlist" id="style-1">
+            <ul class="playlist">             
 
-        <div class="viewlist" id="style-1">
-          <ul class="playlist" style="height: 100%;">
-
-              
-
-              <?php  
-                if (isset($_REQUEST['ok'])) 
-                {
-                  // Gán hàm addslashes để chống sql injection
-                  $timkiem = addslashes($_GET['timkiem']);
- 
-                  // Nếu $timkiem rỗng thì báo lỗi, tức là người dùng chưa nhập liệu mà đã nhấn submit.
-                  if (empty($timkiem)) 
+                <?php  
+                  if (isset($_REQUEST['ok'])) 
                   {
-                    echo "<p style= 'color:red;'>* Dữ liệu tìm kiếm không được để trống</p>";
-                  } 
+                    // Gán hàm addslashes để chống sql injection
+                    $timkiem = addslashes($_GET['timkiem']);
+   
+                    // Nếu $timkiem rỗng thì báo lỗi, tức là người dùng chưa nhập liệu mà đã nhấn submit.
+                    if (empty($timkiem)) 
+                    {
+                      echo "<p style= 'color:red;'>* Dữ liệu tìm kiếm không được để trống</p>";
+                    } 
+                    else
+                    {
+                      // Dùng câu lênh like trong sql và sứ dụng toán tử % của php để tìm kiếm dữ liệu chính xác hơn.
+                      $sql = "SELECT * FROM baihat WHERE tenbh LIKE '%$timkiem%' OR tencs LIKE '%$timkiem%' OR tenns LIKE '%$timkiem%' OR quocgia LIKE '%$timkiem%' OR theloai LIKE '%$theloai%' ";
+   
+                      // Kết nối sql
+                      require("config/connect.php");
+                      // Thực thi câu truy vấn
+                      $kq = mysqli_query($conn,$sql);
+   
+                      // Đếm số dòng trả về trong sql.
+                      $num = mysqli_num_rows($kq);
+   
+                      // Nếu có kết quả thì hiển thị, ngược lại thì thông báo không tìm thấy kết quả
+                      if ($num > 0 && $timkiem != "") 
+                      {
+                        // Dùng $num để đếm số dòng trả về.
+                        echo "<p style='color:#0000FF;'>$num kết quả trả về với từ khóa <b>$timkiem</b></p>";
+                        $dem=1;
+                        while ($data = mysqli_fetch_assoc($kq))
+                        {
+                          echo"<li audiourl='$data[url]' cover='./slider.jpg' artist='Imagine Dragons'>";
+                            echo"<div class='bai-hat-tuan'>";
+
+                              echo"<div class='number'>$dem</div>";
+                              echo"<div class='info'>";
+                                echo"<div><a id='id-name' href='#'>$data[tenbh]</a></div>";
+                                echo"<div class='singer'><a id='id-singer' href='#'>$data[tencs]</a></div>";
+                              echo"</div>";
+                              echo"<div class='view-count'>12</div> ";          
+
+                            echo"</div>";
+                          echo"</li>";
+                          $dem++;
+                        }
+                      }                 
+                      else 
+                      {
+                        echo"<p style='color:red;'>* Không tìm thấy kết quả!;</p>";
+                      } 
+
+                      //Đóng kết nối với CSDL
+                      mysqli_close($conn);
+                    }
+                  }
                   else
                   {
-                    // Dùng câu lênh like trong sql và sứ dụng toán tử % của php để tìm kiếm dữ liệu chính xác hơn.
-                    $sql = "SELECT * FROM baihat WHERE tenbh LIKE '%$timkiem%' OR tencs LIKE '%$timkiem%' OR tenns LIKE '%$timkiem%' OR quocgia LIKE '%$timkiem%' OR theloai LIKE '%$theloai%' ";
- 
-                    // Kết nối sql
+                    //Mở kết nối với CSDL
                     require("config/connect.php");
-                    // Thực thi câu truy vấn
+                    //Thực hiện truy vấn
+                    $sql = "SELECT * FROM baihat WHERE capnhat = 1";
                     $kq = mysqli_query($conn,$sql);
- 
-                    // Đếm số dòng trả về trong sql.
-                    $num = mysqli_num_rows($kq);
- 
-                    // Nếu có kết quả thì hiển thị, ngược lại thì thông báo không tìm thấy kết quả
-                    if ($num > 0 && $timkiem != "") 
+                    
+                    $dem=1;  
+                    while ($data = mysqli_fetch_assoc($kq)) 
                     {
-                      // Dùng $num để đếm số dòng trả về.
-                      echo "<p style='color:#0000FF;'>$num kết quả trả về với từ khóa <b>$timkiem</b></p>";
-                      $dem=1;
-                      while ($data = mysqli_fetch_assoc($kq))
-                      {
-                        echo"<li audiourl='$data[url]' cover='./cover1.jpg' artist='Imagine Dragons'>";
+                      echo"<li audiourl='Faded' cover='./slider.jpg' artist='Alan Walked'>";
                           echo"<div class='bai-hat-tuan'>";
 
                             echo"<div class='number'>$dem</div>";
                             echo"<div class='info'>";
                               echo"<div><a id='id-name' href='#'>$data[tenbh]</a></div>";
-                              echo"<div class='singer'><a id='id-singer' href='#'>Ca sĩ : $data[tencs]</a></div>";
+                              echo"<div class='singer'><a id='id-singer' href='#'>$data[tencs]</a></div>";
                             echo"</div>";
                             echo"<div class='view-count'>12</div> ";          
 
                           echo"</div>";
                         echo"</li>";
                         $dem++;
-                      }
-                    }                 
-                    else 
-                    {
-                      echo"<p style='color:red;'>* Không tìm thấy kết quả!;</p>";
-                    } 
-
-                    //Đóng kết nối với CSDL
+                    }
                     mysqli_close($conn);
                   }
-                }
-                else
-                {
-                  //Mở kết nối với CSDL
-                  require("config/connect.php");
-                  //Thực hiện truy vấn
-                  $sql = "SELECT * FROM baihat WHERE capnhat = 1";
-                  $kq = mysqli_query($conn,$sql);
-                  
-                  $dem=1;  
-                  while ($data = mysqli_fetch_assoc($kq)) 
-                  {
-                    echo"<li audiourl='$data[url]' cover='./cover1.jpg' artist='Imagine Dragons'>";
-                        echo"<div class='bai-hat-tuan'>";
-
-                          echo"<div class='number'>$dem</div>";
-                          echo"<div class='info'>";
-                            echo"<div><a id='id-name' href='#'>$data[tenbh]</a></div>";
-                            echo"<div class='singer'><a id='id-singer' href='#'>Ca sĩ : $data[tencs]</a></div>";
-                          echo"</div>";
-                          echo"<div class='view-count'>12</div> ";          
-
-                        echo"</div>";
-                      echo"</li>";
-                      $dem++;
-                  }
-                  mysqli_close($conn);
-                }
-            ?>
-
-  
-          </ul>
-          <div class="force-overflow"></div>
+              ?>  
+            </ul>
+            <div class="force-overflow"></div>
+          </div>
         </div>
-        
-      </div>    
+        <div class="col-sm-3">
+          abc
+        </div>
+      </div>
+      </div>
+      <div style="height: 20px; width: 100%"></div>s    
     </div>
 
 
@@ -250,8 +257,6 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="./js/jquery-3.3.1.slim.min.js"></script>
-    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>
     
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
