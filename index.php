@@ -15,7 +15,7 @@
     
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #181412; height: 90px; font-family: 'Helvetica', sans-serif;">
     
-      <a class="navbar-brand mr-4 ml-3" href="#">
+      <a class="navbar-brand mr-4 ml-3" href="index.php">
         <img src="./image/logo.png"  alt="logo">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,11 +33,11 @@
         <!-- Image and text -->
         <nav class="navbar navbar-dark" style="background-color: #181412;">
 
-          <div class="navbar-brand ml-4 mr-3" style="" href="#">
-            <span class="" style=" color: #9befe0; position: relative;top: 2px;">
+          <div class="navbar-brand ml-4 mr-3 d-flex" style="" href="#">
+            <span class="" style=" color: #9befe0;margin-top: 7px;">
               <i class="fas fa-circle"></i>
             </span>
-            
+            <div class="dropdown">
               <a class="btn btn-secondary dropdown-toggle abc" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Thể loại
               </a>
@@ -47,7 +47,7 @@
                 <a class="dropdown-item" href="#">Rock</a>
                 <a class="dropdown-item" href="#">Balad</a>
               </div>
-            
+            </div>
           </div>
 
           <a class="navbar-brand mx-4" href="./music.php">
@@ -65,16 +65,25 @@
                     echo"<i class='fas fa-circle'>"; 
                     echo"</i>";
                   echo"</span>";
-                  echo "MyList";
+                  echo "PlayList";
                 echo"</a>";
               echo "</nav>";
               echo "</div>";
 
               echo "<div class='info-user'>";
-                echo"<a href='./admin/admin.php'>";
-        
-                  echo "Xin Chào ".$_SESSION["taikhoan"]." <a href='logout.php'>Đăng xuất</a>";
-                echo"</a>";
+                echo "<div class='dropdown' style='background-color: #181412;'>";
+                  echo "<button class= 'btn btn-secondary dropdown-toggle abc' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
+                  echo $_SESSION["taikhoan"]." ";
+                  echo "</button>" ;
+
+                  echo "<div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>";
+                    echo "<a class='dropdown-item' href='profile.php'>Thông tin cá nhân</a>";
+                    echo "<a class='dropdown-item' href='logout.php'>Nhạc yêu thích</a>";
+                    echo "<a class='dropdown-item' href='logout.php'>Playlist của tôi</a>";
+                    echo "<a class='dropdown-item' href='logout.php'>Nghe gần đây</a>";
+                    echo "<a class='dropdown-item' href='logout.php'>Đăng xuất</a>";
+                  echo "</div>";
+                echo "<div>";   
               echo "</div>";
             }
             else

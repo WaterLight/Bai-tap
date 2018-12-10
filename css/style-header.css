@@ -26,12 +26,12 @@ form.form-inline.my-2.my-lg-0 {
 
 .info-user{
     text-align: center;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .info-user a{
-	display: block;
-	color: #FFF;
+    font-size: 14px;
+	color: rgba(0,0,0, .6);
 }
 
 .info-user a:hover {
@@ -55,5 +55,21 @@ a#dropdownMenuLink {
 }
 
 .dropdown-menu.show {
-    left: 40px;
+    right: 0px;
+    left: unset;
+}
+
+button#dropdownMenuButton {
+    border-color: #181412;
+    background-color: #181412;
+    max-width: 122px;
+    overflow: hidden;
+}
+
+button#dropdownMenuButton:focus {
+    box-shadow: none;
+}
+
+button#dropdownMenuButton:hover{
+    color: #16e58a; 
 }
