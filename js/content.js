@@ -2,8 +2,6 @@ jQuery(document).ready(function() {
 
     // inner variables
     var song;
-    var tracker = $('.tracker');
-    var volume = $('.volume');
 
     function initAudio(elem) {
         var url = elem.attr('audiourl');
@@ -21,33 +19,6 @@ jQuery(document).ready(function() {
         $('.playlist li').removeClass('active');
         elem.addClass('active');
     }
-    
-    function playAudio() {
-        song.play();
-
-        $('.play').addClass('hidden');
-        $('.pause').addClass('visible');
-    }
-    function stopAudio() {
-        song.pause();
-
-        $('.play').removeClass('hidden');
-        $('.pause').removeClass('visible');
-    }
-
-    // play click
-    $('.play').click(function (e) {
-        e.preventDefault();
-
-        playAudio();
-    });
-
-    // pause click
-    $('.pause').click(function (e) {
-        e.preventDefault();
-
-        stopAudio();
-    });
 
     // forward click
     $('.fwd').click(function (e) {

@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="./css/style-header.css">
     <link rel="stylesheet" href="./css/music-content.css">
     <link rel="stylesheet" href="./css/style-footer.css">
+    <!-- Audio Player CSS & Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="js/mediaelement-and-player.min.js"></script>
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <!-- end Audio Player CSS & Scripts -->
     
     <title>Trang chủ</title>
   </head>
@@ -108,28 +113,15 @@
       <div class="container">
       <div class="row">
         <div class="col-sm-9">
-          <div class="player">
+          <div class="player mb-2">
             <div style="background: rgb(0,0,0);background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 0%);width: 100%;height: 100%;">
-            <div class="cover"></div>
-            <div class="title"></div>
-            <div class="artist"></div>
-            
-            <div class="controls">
-              <div class="rew">
-                <i class="fas fa-backward" ></i>
-              </div>
-              <div class="play">
-                <i class="fas fa-play-circle" ></i>
-           
-              </div>
-              <div class="pause">
-                <i class="fas fa-pause-circle" ></i>
-              </div>
-              <div class="fwd">
-                <i class="fas fa-forward" ></i>
-              </div>
-              
+
+            <div class="audio-player">
+              <h1>Demo - Preview Song</h1>
+                <img class="cover" src="./image/slider.jpg" alt="">
+                <audio id="audio-player" src="./mp3/05.mp3" type="audio/mp3" controls="controls"></audio>
             </div>
+
             </div>
           </div>
 
@@ -233,7 +225,6 @@
     </div>
 
 
-
   <!-- ======================== Footer ======================== -->
   
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #181412;font-family: 'Helvetica',sans-serif; height: 40px;">
@@ -265,7 +256,17 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="./js/jquery-3.3.1.slim.min.js"></script>
+    <script>
+      $(document).ready(function() {
+          $('#audio-player').mediaelementplayer({
+              alwaysShowControls: true,
+              features: ['playpause','volume','progress'],
+              audioVolume: 'horizontal',
+              audioWidth: 400,
+              audioHeight: 120
+          });
+      });
+    </script>
     
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
