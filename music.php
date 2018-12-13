@@ -262,8 +262,8 @@
               alwaysShowControls: true,
               features: ['playpause','volume','progress'],
               audioVolume: 'horizontal',
-              audioWidth: 400,
-              audioHeight: 120
+              audioWidth: 825,
+              audioHeight: 290
           });
       });
     </script>
