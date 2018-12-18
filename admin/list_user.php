@@ -1,15 +1,19 @@
-<?php  
-	require("templates/header.php");
-	echo"<form action='../admin/list_user.php'>";
-	require("../search/search_admin.php");
-	// Nếu người dùng ấn tìm kiếm thì thực hiện
+<?php
+    session_start();
+    if($_SESSION["capbac"] == 1)
+    {
+        require("templates/header.php");
+        echo"<form action='../admin/list_user.php'>";
+        require("../search/search_admin.php");
+        // Nếu người dùng ấn tìm kiếm thì thực hiện
         if (isset($_REQUEST['ok'])) 
         {
             // Gán hàm addslashes để chống sql injection
-            $timkiem = addslashes($_GET['timkiem']);
+            $timkiem = addslashes(stripslashes($_GET['timkiem']));
  
             // Nếu $timkiem rỗng thì báo lỗi, tức là người dùng chưa nhập liệu mà đã nhấn submit.
-            if (empty($timkiem)) {
+            if (empty($timkiem)) 
+            {
                 echo "<p style= 'color:red;'>* Dữ liệu tìm kiếm không được để trống</p>";
             } 
             else
@@ -33,87 +37,55 @@
                     
                     // Vòng lặp while & mysqli_fetch_assoc dùng để lấy toàn bộ dữ liệu có trong table và trả về dữ liệu ở dạng array.
                     echo '<table border="1" cellspacing="0" cellpadding="10">'; 
-                    echo "<tr style='background: #97FFFF;'>";
-                    	echo"<td></td>";
-                		echo"<td>Người dùng</td>";					
-						echo"<td>Email</td>";
-						echo"<td>Cấp bậc</td>";
-						echo"<td>Xóa</td>";
-					echo"</tr>";
-
+                    require("templates/table_user.php");
+                    $stt=1;
                     while ($data = mysqli_fetch_assoc($kq)) 
                     {
-                        echo"<tr>";
-							echo"<td></td>";
-							echo"<td>$data[taikhoan]</td>";
-							echo"<td>$data[email]</td>";						
-							if($data['capbac'] == 1)
-							{
-								echo "<td>Admin</td>";
-							}
-							else
-							{
-								echo "<td>Thành viên</td>";
-							}
-							echo"<td><a href='del_list_user.php?matv=$data[matv]' onclick='return show_confirm()' style='color:red;'>Xóa</a></td>";						
-						echo"</tr>";					
+                        require("templates/show_user.php"); 
+                        $stt++;         
                     }                   
                 } 
                 else 
                 {
-                    echo"<p style='color:red;'>* Không tìm thấy kết quả!</p>";
+                    echo"<p style='color:red;'>* Không tìm thấy kết quả!;</p>";
                 }
                 //Đóng kết nối với CSDL
-				mysqli_close($conn);
+                mysqli_close($conn);
             }
-            	echo"</table>";
-			echo"</div>";	
+                echo"</table>";
+            echo"</div>";   
         }
         else
         {
-        	echo"<tr style='background: #97FFFF;'>";
-				echo"<td>Số thứ tự</td>";
-				echo"<td>Người dùng</td>";
-				echo"<td>Email</td>";
-				echo"<td>Cấp bậc</td>";
-				echo"<td>Xóa</td>";
-			echo"</tr>";
-			
-			//Mở kết nối với CSDL
-			require("../config/connect.php");
-			//Thực hiện truy vấn
-			$sql = "SELECT matv,taikhoan,email,capbac FROM thanhvien";
-			$kq = mysqli_query($conn,$sql);
-			$stt = 1;
-			// $data = mysqli_fetch_assoc($kq); //Mảng không có thứ tự
-			while ($data = mysqli_fetch_assoc($kq)) 
-			{
-				echo"<tr>";
-					echo"<td>$stt</td>";
-					echo"<td>$data[taikhoan]</td>";
-					echo"<td>$data[email]</td>";						
-					if($data['capbac'] == 1)
-					{
-						echo "<td>Admin</td>";
-					}
-					else
-					{
-						echo "<td>Thành viên</td>";
-					}
-					echo"<td><a href='del_list_user.php?matv=$data[matv]' onclick='return show_confirm()' style='color:red;'>Xóa</a></td>";
-					//href='del_list_user.php?id=$data[matv]' matv sẽ được chuyển theo đường dẫn
-				echo"</tr>";
-				$stt++;
-			}			
-			//Đóng kết nối với CSDL
-			mysqli_close($conn);
-						
-				echo"</table>";
-			echo"</div>";	
+            echo"<div style='height: 40px;'>";
+                echo"<a style='color: #FF33FF;' href='send_mail_all.php'>Gửi thư cho tất cả</a>";
+            echo"</div>";
+            require("templates/table_user.php");
+            
+            //Mở kết nối với CSDL
+            require("../config/connect.php");
+            //Thực hiện truy vấn
+            $sql = "SELECT * FROM thanhvien";
+            $kq = mysqli_query($conn,$sql);
+            $stt = 1;
+            // $data = mysqli_fetch_assoc($kq); //Mảng không có thứ tự
+            while ($data = mysqli_fetch_assoc($kq)) 
+            {
+                require("templates/show_user.php");
+                $stt++;
+            }           
+            //Đóng kết nối với CSDL
+            mysqli_close($conn);
+                        
+                echo"</table>";
+            echo"</div>";   
         }
-?>
-	
-			
-<?php  
-	require("templates/footer.php");
+    require("templates/footer.php"); 
+    }
+    else
+    {
+        ob_start(); 
+        header('Location: ../index.php');
+        ob_end_flush(); 
+    }	
 ?>

@@ -1,12 +1,15 @@
-<?php  
-	require("templates/header.php");
-	echo"<form action='../admin/list_music.php'>";
-	require("../search/search_admin.php");
-	// Nếu người dùng ấn tìm kiếm thì thực hiện
+<?php 
+    session_start();
+    if($_SESSION["capbac"] == 1)
+    {
+        require("templates/header.php");
+        echo"<form action='../admin/list_music.php'>";
+        require("../search/search_admin.php");
+        // Nếu người dùng ấn tìm kiếm thì thực hiện
         if (isset($_REQUEST['ok'])) 
         {
             // Gán hàm addslashes để chống sql injection
-            $timkiem = addslashes($_GET['timkiem']);
+            $timkiem = addslashes(stripslashes($_GET['timkiem']));
  
             // Nếu $timkiem rỗng thì báo lỗi, tức là người dùng chưa nhập liệu mà đã nhấn submit.
             if (empty($timkiem)) {
@@ -15,7 +18,7 @@
             else
             {
                 // Dùng câu lênh like trong sql và sứ dụng toán tử % của php để tìm kiếm dữ liệu chính xác hơn.
-                $sql = "SELECT * FROM baihat WHERE tenbh LIKE '%$timkiem%' OR tencs LIKE '%$timkiem%' OR tenns LIKE '%$timkiem%' OR quocgia LIKE '%$timkiem%' OR theloai LIKE '%$theloai%' ";
+                $sql = "SELECT * FROM baihat WHERE tenbh LIKE '%$timkiem%' OR tencs LIKE '%$timkiem%' OR tenns LIKE '%$timkiem%' OR quocgia LIKE '%$timkiem%' OR theloai LIKE '%$timkiem%' ";
  
                 // Kết nối sql
                 require("../config/connect.php");
@@ -33,31 +36,11 @@
  
                     // Vòng lặp while & mysqli_fetch_assoc dùng để lấy toàn bộ dữ liệu có trong table và trả về dữ liệu ở dạng array.
                     echo '<table border="1" cellspacing="0" cellpadding="10">'; 
-
-                    echo "<tr style='background: #97FFFF;'>";
-                		echo"<td>Mã bài hát</td>";					
-						echo"<td>Tên bài hát</td>";
-						echo"<td>Ca sĩ</td>";
-						echo"<td>Nhạc sĩ</td>";
-						echo"<td>Quốc gia</td>";
-						echo"<td>Thể loại</td>";
-						echo"<td>Đương dẫn file</td>";
-						echo"<td>Sửa</td>";
-						echo"<td>Xóa</td>";
-					echo"</tr>";                 
+                    require("templates/table_music.php");
+                                     
                     while ($data = mysqli_fetch_assoc($kq)) 
                     {
-                        echo"<tr>";
-                        	echo"<td>$data[mabh]</td>";						
-							echo"<td>$data[tenbh]</td>";
-							echo"<td>$data[tencs]</td>";
-							echo"<td>$data[tenns]</td>";
-							echo"<td>$data[quocgia]</td>";
-							echo"<td>$data[theloai]</td>";
-							echo"<td>$data[url]</td>";						
-							echo"<td><a href='edit_list_music.php?mabh=$data[mabh]' style='color:blue;'>Sửa</a></td>";	
-							echo"<td><a href='del_list_music.php?mabh=$data[mabh]' onclick='return show_confirm()' style='color:red;'>Xóa</a></td>";						
-						echo"</tr>";
+                        require("templates/show_music.php");
                     }                   
                 } 
                 else 
@@ -65,57 +48,40 @@
                     echo"<p style='color:red;'>* Không tìm thấy kết quả!;</p>";
                 }
                 //Đóng kết nối với CSDL
-				mysqli_close($conn);
+                mysqli_close($conn);
             }
-            	echo"</table>";
-			echo"</div>";
+                echo"</table>";
+            echo"</div>";
         }
         else
         {
+            echo"<div style='height: 40px;'>";
+                echo"<a style='color: #FF33FF;' href='add_list_music.php'>Thêm bài hát</a>";
+            echo"</div>";
+            require("templates/table_music.php");
 
-			echo"<div style='height: 40px;'>";
-				echo"<a style='color: #FF33FF;' href='add_list_music.php'>Thêm bài hát</a>";
-			echo"</div>";
-			echo"<tr style='background: #97FFFF;''>";
-				echo"<td>Mã bài hát</td>";
-				echo"<td>Tên bài hát</td>";
-				echo"<td>Ca sĩ</td>";
-				echo"<td>Nhạc sĩ</td>";
-				echo"<td>Quốc gia</td>";
-				echo"<td>Thể loại</td>";
-				echo"<td>Đương dẫn file</td>";
-				echo"<td>Sửa</td>";
-				echo"<td>Xóa</td>";
-			echo"</tr>";
+            //Mở kết nối với CSDL
+            require("../config/connect.php");
+            //Thực hiện truy vấn
+            $sql = "SELECT * FROM baihat";
+            $kq = mysqli_query($conn,$sql);
+            // $data = mysqli_fetch_assoc($kq); //Mảng không có thứ tự
+            while ($data = mysqli_fetch_assoc($kq)) 
+            {
+                require("templates/show_music.php");
+            }           
+            //Đóng kết nối với CSDL
+            mysqli_close($conn);
 
-			//Mở kết nối với CSDL
-			require("../config/connect.php");
-			//Thực hiện truy vấn
-			$sql = "SELECT * FROM baihat";
-			$kq = mysqli_query($conn,$sql);
-			// $data = mysqli_fetch_assoc($kq); //Mảng không có thứ tự
-			while ($data = mysqli_fetch_assoc($kq)) 
-			{
-				echo"<tr>";
-					echo"<td>$data[mabh]</td>";
-					echo"<td>$data[tenbh]</td>";
-					echo"<td>$data[tencs]</td>";
-					echo"<td>$data[tenns]</td>";
-					echo"<td>$data[quocgia]</td>";
-					echo"<td>$data[theloai]</td>";
-					echo"<td>$data[url]</td>";						
-					echo"<td><a href='edit_list_music.php?mabh=$data[mabh]' style='color:blue;'>Sửa</a></td>";	
-					echo"<td><a href='del_list_music.php?mabh=$data[mabh]' onclick='return show_confirm()' style='color:red;'>Xóa</a></td>";						
-				echo"</tr>";
-			}			
-			//Đóng kết nối với CSDL
-			mysqli_close($conn);
-
-				echo"</table>";
-			echo"</div>";	
+                echo"</table>";
+            echo"</div>";   
         }
-?>	
-
-<?php  
-	require("templates/footer.php");
+    require("templates/footer.php");   
+    }
+    else
+    {
+        ob_start(); 
+        header('Location: ../index.php');
+        ob_end_flush(); 
+    }    
 ?>

@@ -1,7 +1,7 @@
 *{margin:0;padding: 0; box-sizing: border-box;}
 
 a.navbar-brand.mx-4, i.fas.fa-circle {
-	transition: all 0.4s ease;
+    transition: all 0.4s ease;
 }
 
 a.navbar-brand.mx-4:hover {
@@ -9,11 +9,11 @@ a.navbar-brand.mx-4:hover {
 }
 
 a.navbar-brand.mx-4:hover i.fas.fa-circle {
-	color: #16e58a;
+    color: #16e58a;
 }
 
 button.btn.btn-outline-success.my-2.my-sm-0 {
-	transition: all 0.4s ease;
+    transition: all 0.4s ease;
 }
 
 .form-control:focus {
@@ -31,11 +31,11 @@ form.form-inline.my-2.my-lg-0 {
 
 .info-user a{
     font-size: 14px;
-	color: rgba(0,0,0, .6);
+    color: rgba(0,0,0, .6);
 }
 
 .info-user a:hover {
-	color: #16e58a;
+    color: #16e58a;
 }
 
 a#dropdownMenuLink {

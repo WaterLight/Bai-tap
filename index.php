@@ -15,7 +15,7 @@
     
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #181412; height: 90px; font-family: 'Helvetica', sans-serif;">
     
-      <a class="navbar-brand mr-4 ml-3" href="index.php">
+      <a class="navbar-brand mr-4 ml-3" href="./index.php">
         <img src="./image/logo.png"  alt="logo">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,7 +23,7 @@
       </button>
 
       <form class="form-inline my-2 my-lg-0 " action="index.php" method="post">
-        <input class="form-control mr-sm-2" type="search" placeholder="Tìm" aria-label="Search">
+        <input class="form-control mr-sm-2" type="search" placeholder="Tìm" aria-label="Search" name="timkiem">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
         name="ok">Tìm kiếm</button>
       </form>
@@ -38,7 +38,7 @@
               <i class="fas fa-circle"></i>
             </span>
             <div class="dropdown">
-              <a class="btn btn-secondary dropdown-toggle abc" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="btn btn-secondary dropdown-toggle abc" href="./admin/admin.php" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Thể loại
               </a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -60,43 +60,45 @@
           <?php 
             if(isset($_SESSION["taikhoan"]))
             {
-                echo"<a class='navbar-brand mx-4' href='./login.php'>";
-                  echo"<span class='mr-3' style=' color: #f573a0;'>";
-                    echo"<i class='fas fa-circle'>"; 
-                    echo"</i>";
-                  echo"</span>";
-                  echo "PlayList";
-                echo"</a>";
-              echo "</nav>";
-              echo "</div>";
-
-              echo "<div class='info-user'>";
-                echo "<div class='dropdown' style='background-color: #181412;'>";
-                  echo "<button class= 'btn btn-secondary dropdown-toggle abc' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
-                  echo $_SESSION["taikhoan"]." ";
-                  echo "</button>" ;
-
-                  echo "<div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>";
-                    echo "<a class='dropdown-item' href='profile.php'>Thông tin cá nhân</a>";
-                    echo "<a class='dropdown-item' href='logout.php'>Nhạc yêu thích</a>";
-                    echo "<a class='dropdown-item' href='logout.php'>Playlist của tôi</a>";
-                    echo "<a class='dropdown-item' href='logout.php'>Nghe gần đây</a>";
-                    echo "<a class='dropdown-item' href='logout.php'>Đăng xuất</a>";
-                  echo "</div>";
-                echo "<div>";   
-              echo "</div>";
-            }
+          ?>    
+                <a class='navbar-brand mx-4' href='./mylist.php'>
+                  <span class='mr-3' style=' color: #f573a0;'>
+                    <i class='fas fa-circle'> 
+                    </i>
+                  </span>
+                  MyList
+                </a>
+              </nav>
+              </div>
+              <div class='info-user'>
+                <div class='dropdown' style='background-color: #181412;'>
+                  <button class= 'btn btn-secondary dropdown-toggle abc' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                 <?php echo $_SESSION["taikhoan"]." "; ?> 
+                  </button>
+                  <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+                    <a class='dropdown-item' href='profile.php'>Thông tin cá nhân</a>
+                    <a class='dropdown-item' href='#'>Nhạc yêu thích</a>
+                    <a class='dropdown-item' href='#'>Playlist của tôi</a>
+                    <a class='dropdown-item' href='#'>Nghe gần đây</a>
+                    <a class='dropdown-item' href='logout.php'>Đăng xuất</a>
+                  </div>
+                <div>  
+              </div>
+          <?php  
+            }            
             else
-            {             
-              echo"<a class='navbar-brand mx-4' href='./login.php'>";
-                echo"<span class='mr-3' style=' color: #f573a0;'>";
-                  echo"<i class='fas fa-circle'>"; 
-                  echo"</i>";
-                echo"</span>";
-                echo "Đăng nhập";
-              echo"</a>";
-              echo "</nav>";
-              echo "</div>";
+            { 
+          ?>                
+              <a class='navbar-brand mx-4' href='./login.php'>
+                <span class='mr-3' style=' color: #f573a0;'>
+                  <i class='fas fa-circle'>
+                  </i>
+                </span>
+                Đăng nhập
+              </a>
+              </nav>
+              </div>
+          <?php    
             }      
           ?>
   </nav>
@@ -146,87 +148,144 @@
             </nav>
           </div>
           <div class="content">
-            <div class="box">
-              <div class="avatar">
-                <div class="overload">
-                  <img src="./image/slider.jpg" alt="">
-                  <span><i class=" fab fa-google-play fa-2x"></i></span>
-                </div>
+            
+          <?php
+            if (isset($_REQUEST['ok'])) 
+            {
+          ?>
+            
+               <div class="body">
+      <div style="background: rgb(0,0,0);background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 0%);width: 100%;height: 100%;">
+      <div style="height: 20px; width: 100%"></div>
+      <div class="container">
+      <div class="row">
+        <div class="col-sm-9">
+          <div class="player">
+            <div style="background: rgb(0,0,0);background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 0%);width: 100%;height: 100%;">
+            <div class="cover"></div>
+            <div class="title"></div>
+            <div class="artist"></div>
+            
+            <div class="controls">
+              <div class="rew">
+                <i class="fas fa-backward" ></i>
               </div>
-              <div class="name">Sự Im Lặng Dễ Chịu</div>
-                <div class="singer">Lê Hiếu</div>                
+              <div class="play">
+                <i class="fas fa-play-circle" ></i>
+           
+              </div>
+              <div class="pause">
+                <i class="fas fa-pause-circle" ></i>
+              </div>
+              <div class="fwd">
+                <i class="fas fa-forward" ></i>
+              </div>
+              
             </div>
+            </div>
+          </div>
 
-            <div class="box">
-              <div class="avatar">
-                <div class="overload">
-                  <img src="./image/slider.jpg" alt="">
-                  <span><i class=" fab fa-google-play fa-2x"></i></span>
-                </div>
-              </div>
-              <div class="name">Sự Im Lặng Dễ Chịu</div>
-                <div class="singer">Lê Hiếu</div>                
-            </div>
-            <div class="box">
-              <div class="avatar">
-                <div class="overload">
-                  <img src="./image/slider.jpg" alt="">
-                  <span><i class=" fab fa-google-play fa-2x"></i></span>
-                </div>
-              </div>
-              <div class="name">Sự Im Lặng Dễ Chịu</div>
-                <div class="singer">Lê Hiếu</div>                
-            </div>
-            <div class="box">
-              <div class="avatar">
-                <div class="overload">
-                  <img src="./image/slider.jpg" alt="">
-                  <span><i class=" fab fa-google-play fa-2x"></i></span>
-                </div>
-              </div>
-              <div class="name">Sự Im Lặng Dễ Chịu</div>
-                <div class="singer">Lê Hiếu</div>                
-            </div>
-            <div class="box">
-              <div class="avatar">
-                <div class="overload">
-                  <img src="./image/slider.jpg" alt="">
-                  <span><i class=" fab fa-google-play fa-2x"></i></span>
-                </div>
-              </div>
-              <div class="name">Sự Im Lặng Dễ Chịu</div>
-                <div class="singer">Lê Hiếu</div>                
-            </div>
-            <div class="box">
-              <div class="avatar">
-                <div class="overload">
-                  <img src="./image/slider.jpg" alt="">
-                  <span><i class=" fab fa-google-play fa-2x"></i></span>
-                </div>
-              </div>
-              <div class="name">Sự Im Lặng Dễ Chịu</div>
-                <div class="singer">Lê Hiếu</div>                
-            </div>
-            <div class="box">
-              <div class="avatar">
-                <div class="overload">
-                  <img src="./image/slider.jpg" alt="">
-                  <span><i class=" fab fa-google-play fa-2x"></i></span>
-                </div>
-              </div>
-              <div class="name">Sự Im Lặng Dễ Chịu</div>
-                <div class="singer">Lê Hiếu</div>                
-            </div>
-            <div class="box">
-              <div class="avatar">
-                <div class="overload">
-                  <img src="./image/slider.jpg" alt="">
-                  <span><i class=" fab fa-google-play fa-2x"></i></span>
-                </div>
-              </div>
-              <div class="name">Sự Im Lặng Dễ Chịu</div>
-                <div class="singer">Lê Hiếu</div>                
-            </div>
+          <div class="viewlist" id="style-1">
+            <ul class="playlist">
+            <?php         
+              // Gán hàm addslashes để chống sql injection
+                $timkiem = addslashes($_POST['timkiem']);
+
+                // Nếu $timkiem rỗng thì báo lỗi, tức là người dùng chưa nhập liệu mà đã nhấn submit.
+                if (empty($timkiem)) 
+                {
+                  echo "<p style= 'color:red;'>* Dữ liệu tìm kiếm không được để trống</p>";
+                } 
+                else
+                {
+                  // Dùng câu lênh like trong sql và sứ dụng toán tử % của php để tìm kiếm dữ liệu chính xác hơn.
+                  $sql = "SELECT * FROM baihat WHERE tenbh LIKE '%$timkiem%' OR tencs LIKE '%$timkiem%' OR tenns LIKE '%$timkiem%' OR quocgia LIKE '%$timkiem%' OR theloai LIKE '%$timkiem%' ";
+
+                  // Kết nối sql
+                  require("config/connect.php");
+                  mysqli_set_charset($conn, 'UTF8');
+                  // Thực thi câu truy vấn
+                  $kq = mysqli_query($conn,$sql);
+
+                  // Đếm số dòng trả về trong sql.
+                  $num = mysqli_num_rows($kq);
+
+                  // Nếu có kết quả thì hiển thị, ngược lại thì thông báo không tìm thấy kết quả
+                  if ($num > 0 && $timkiem != "") 
+                  {
+                    // Dùng $num để đếm số dòng trả về.
+                    echo "<p style='color:#FF6633;'>$num kết quả trả về với từ khóa <b>$timkiem</b></p>";
+                    $dem=1;
+                    while ($data = mysqli_fetch_assoc($kq))
+                    {
+                      $data['url']="../".$data['url'];
+                      $data['img']="../".$data['img'];
+                      echo"<li audiourl='$data[url]' cover='$data[img]' artist='$data[tenbh]'>";
+                        echo"<div class='bai-hat-tuan'>";
+
+                          echo"<div class='number'>$dem</div>";
+                          echo"<div class='info'>";
+                            echo"<div><a id='id-name' href='#'>$data[tenbh]</a></div>";
+                            echo"<div class='singer'><a id='id-singer' href='#'>$data[tencs]</a></div>";
+                          echo"</div>";
+                          echo"<div class='view-count'>12</div> ";          
+
+                        echo"</div>";
+                      echo"</li>";
+                      $dem++;
+                    }
+                  }                 
+                  else 
+                  {
+                    echo"<p style='color:red;'>* Không tìm thấy kết quả!;</p>";
+                  } 
+
+                  //Đóng kết nối với CSDL
+                  mysqli_close($conn);
+                }
+        ?> 
+               </ul>
+            <div class="force-overflow"></div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          abc
+        </div>
+      </div>
+      </div>
+      <div style="height: 20px; width: 100%"></div>s    
+    </div>
+
+      <?php 
+          
+
+          }
+
+
+          else
+          {
+            //Mở kết nối với CSDL
+            require("config/connect.php");
+            //Thực hiện truy vấn
+            $sql = "SELECT * FROM baihat WHERE moi = 1";
+            $kq = mysqli_query($conn,$sql);
+                      
+            while ($data = mysqli_fetch_assoc($kq)) 
+            {           
+              echo"<div class='box'>";
+                echo"<div class='avatar'>";
+                  echo"<div class='overload'>";
+                    echo"<a href='music.php?mabh= $data[mabh]'><img src='$data[img]' alt=''></a>";
+                    echo"<span><i class=' fab fa-google-play fa-2x'></i></span>";
+                  echo"</div>";
+                echo"</div>";
+                echo"<div class='name'>$data[tenbh]</div>";
+                  echo"<div class='singer'>$data[tencs]</div>";                
+              echo"</div>";
+            }
+            mysqli_close($conn);
+          ?>
+            
           </div>
 
           <div class="mb-3 mt-2">
@@ -235,81 +294,54 @@
          
             
             <div class="row">
-
+              <?php  
+                //Mở kết nối với CSDL
+                require("config/connect.php");
+                //Thực hiện truy vấn
+                $sql = "SELECT * FROM baihat WHERE haynhat = 2";
+                $kq = mysqli_query($conn,$sql);
+                $data = mysqli_fetch_assoc($kq);
+              ?>
               <div class="col-sm-5">
                 <div class="box">
                   <div class="avatar">
                     <div class="overload">
-                      <img src="./image/slider.jpg" alt="" style="width: 326px; height: 307px;">
+                      <img src="<?php echo $data['img']; ?>" alt="" style="width: 326px; height: 307px;">
                       <span><i class=" fab fa-google-play fa-2x"></i></span>
                     </div>
                   </div>
                   <div class="name">The Best Of All</div>                
                 </div>
               </div>
+              <?php 
+                mysqli_close($conn);
+              ?>
 
               <div class="col-sm-7">
                 <div class="content">
+                  <?php  
+                    require("config/connect.php");
+            
+                    $sql = "SELECT * FROM baihat WHERE haynhat = 1";
+                    $kq = mysqli_query($conn,$sql);
+                              
+                    while ($data = mysqli_fetch_assoc($kq))
+                    {
+                      echo"<div class='box'>";
+                        echo"<div class='avatar'>";
+                          echo"<div class='overload'>";
+                            echo"<a href='music.php?mabh= $data[mabh]'><img src='$data[img]' style='width: 140px;height: 130px;'></a>";
+                            echo"<span><i class=' fab fa-google-play fa-2x'></i></span>";
+                          echo"</div>";
+                        echo"</div>";
+                        echo"<div class='name'>The Best Of</div>";            
+                      echo"</div>";
+                    }
+                    mysqli_close($conn);
+                  ?>
+                  
 
-                  <div class="box">
-                    <div class="avatar">
-                      <div class="overload">
-                        <img src="./image/slider.jpg" alt="" style="width: 140px;height: 130px;">
-                        <span><i class=" fab fa-google-play fa-2x"></i></span>
-                      </div>
-                    </div>
-                    <div class="name">The Best Of</div>            
-                  </div>
-
-                  <div class="box">
-                    <div class="avatar">
-                      <div class="overload">
-                        <img src="./image/slider.jpg" alt="" style="width: 140px;height: 130px;">
-                        <span><i class=" fab fa-google-play fa-2x"></i></span>
-                      </div>
-                    </div>
-                    <div class="name">The Best Of</div>            
-                  </div>
-
-                  <div class="box">
-                    <div class="avatar">
-                      <div class="overload">
-                        <img src="./image/slider.jpg" alt="" style="width: 140px;height: 130px;">
-                        <span><i class=" fab fa-google-play fa-2x"></i></span>
-                      </div>
-                    </div>
-                    <div class="name">The Best Of</div>            
-                  </div>
-
-                  <div class="box">
-                    <div class="avatar">
-                      <div class="overload">
-                        <img src="./image/slider.jpg" alt="" style="width: 140px;height: 130px;">
-                        <span><i class=" fab fa-google-play fa-2x"></i></span>
-                      </div>
-                    </div>
-                    <div class="name">The Best Of</div>            
-                  </div>
-
-                  <div class="box">
-                    <div class="avatar">
-                      <div class="overload">
-                        <img src="./image/slider.jpg" alt="" style="width: 140px;height: 130px;">
-                        <span><i class=" fab fa-google-play fa-2x"></i></span>
-                      </div>
-                    </div>
-                    <div class="name">The Best Of</div>            
-                  </div>
-
-                  <div class="box">
-                    <div class="avatar">
-                      <div class="overload">
-                        <img src="./image/slider.jpg" alt="" style="width: 140px;height: 130px;">
-                        <span><i class=" fab fa-google-play fa-2x"></i></span>
-                      </div>
-                    </div>
-                    <div class="name">The Best Of</div>            
-                  </div>
+                 
                
                 </div>
               </div>                
@@ -327,78 +359,27 @@
                 <li class="breadcrumb-item"><a href="#">Hàn Quốc</a></li>
               </ol>
             </nav>
-
-            <div class="bai-hat-tuan">
-              <div class="number">1</div>
-              <div class="info">
-                <div class="title"><a id="id-name" href="#">Duyên Mình Lỡ</a></div>
-                <div class="singer mb-2"><a id="id-singer" href="#">Hương Tràm</a></div>
-              </div>
-            </div>
-
-            <div class="bai-hat-tuan">
-              <div class="number">1</div>
-              <div class="info">
-                <div class="title"><a id="id-name" href="#">Duyên Mình Lỡ</a></div>
-                <div class="singer mb-2"><a id="id-singer" href="#">Hương Tràm</a></div>
-              </div>
-            </div>
-
-            <div class="bai-hat-tuan">
-              <div class="number">1</div>
-              <div class="info">
-                <div class="title"><a id="id-name" href="#">Duyên Mình Lỡ</a></div>
-                <div class="singer mb-2"><a id="id-singer" href="#">Hương Tràm</a></div>
-              </div>
-            </div>
-
-            <div class="bai-hat-tuan">
-              <div class="number">1</div>
-              <div class="info">
-                <div class="title"><a id="id-name" href="#">Duyên Mình Lỡ</a></div>
-                <div class="singer mb-2"><a id="id-singer" href="#">Hương Tràm</a></div>
-              </div>
-            </div>
-
-            <div class="bai-hat-tuan">
-              <div class="number">1</div>
-              <div class="info">
-                <div class="title"><a id="id-name" href="#">Duyên Mình Lỡ</a></div>
-                <div class="singer mb-2"><a id="id-singer" href="#">Hương Tràm</a></div>
-              </div>
-            </div>
-
-            <div class="bai-hat-tuan">
-              <div class="number">1</div>
-              <div class="info">
-                <div class="title"><a id="id-name" href="#">Duyên Mình Lỡ</a></div>
-                <div class="singer mb-2"><a id="id-singer" href="#">Hương Tràm</a></div>
-              </div>
-            </div>
-
-            <div class="bai-hat-tuan">
-              <div class="number">7</div>
-              <div class="info">
-                <div class="title"><a id="id-name" href="#">Duyên Mình Lỡ</a></div>
-                <div class="singer mb-2"><a id="id-singer" href="#">Hương Tràm</a></div>
-              </div>
-            </div>
             
-            <div class="bai-hat-tuan">
-              <div class="number">8</div>
-              <div class="info">
-                <div class="title"><a id="id-name" href="#">Duyên Mình Lỡ</a></div>
-                <div class="singer mb-2"><a id="id-singer" href="#">Hương Tràm</a></div>
-              </div>
-            </div>
-
-            <div class="bai-hat-tuan">
-              <div class="number">9</div>
-              <div class="info">
-                <div class="title"><a id="id-name" href="#">Duyên Mình Lỡ</a></div>
-                <div class="singer mb-2"><a id="id-singer" href="#">Hương Tràm</a></div>
-              </div>
-            </div>
+            <?php  
+              require("config/connect.php");
+            
+              $sql = "SELECT mabh, topten, tenbh, tencs FROM baihat WHERE topten >0 AND topten <11 ORDER BY topten";
+              $kq = mysqli_query($conn,$sql);
+              while ($data = mysqli_fetch_assoc($kq))
+              {
+                echo"<div class='bai-hat-tuan'>";
+                  echo"<div class='number'>$data[topten]</div>";
+                  echo"<div class='info'>";
+                    echo"<div class='title'><a id='id-name' href='music.php?mabh= $data[mabh]'>$data[tenbh]</a></div>";
+                    echo"<div class='singer mb-2'><a id='id-singer' href='music.php?mabh= $data[mabh]'>$data[tencs]</a></div>";
+                  echo"</div>";
+                echo"</div>";
+              }
+              mysqli_close($conn);
+          }         
+            
+        ?>
+           
 
           </div> 
 

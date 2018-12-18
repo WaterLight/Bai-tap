@@ -39,7 +39,7 @@
               <i class="fas fa-circle"></i>
             </span>
             <div class="dropdown">
-              <a class="btn btn-secondary dropdown-toggle abc" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="btn btn-secondary dropdown-toggle abc" href="./admin/admin.php" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Thể loại
               </a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -70,13 +70,11 @@
                 echo"</a>";
               echo "</nav>";
               echo "</div>";
-
               echo "<div class='info-user'>";
                 echo "<div class='dropdown' style='background-color: #181412;'>";
                   echo "<button class= 'btn btn-secondary dropdown-toggle abc' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
                   echo $_SESSION["taikhoan"]." ";
                   echo "</button>" ;
-
                   echo "<div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>";
                     echo "<a class='dropdown-item' href='profile.php'>Thông tin cá nhân</a>";
                     echo "<a class='dropdown-item' href='logout.php'>Nhạc yêu thích</a>";
@@ -123,10 +121,32 @@
               <div>Thông tin tài khoản</div>
             </div>
             <div class="col-sm-6">
-              <div>Họ và tên</div>
-              <div>Giới tính</div>
-              <div>Ngày sinh</div>
-              <div>Địa chỉ</div>
+              <div>
+                <form class="form-inline">
+                <label class="sr-only" for="inlineFormInputName2">Name</label>
+                <input type="text" class="form-control mb-2 mr-sm-2 pr-5" id="inlineFormInputName2" placeholder="Họ và tên">              
+                <button type="submit" class="btn btn-secondary mb-2" style="background-color: #203149;font-size: 13px;
+    border-color: #203149;">Thay đổi</button>
+              </form>
+              </div>
+              <div>
+                  <form class="form-inline">
+                  <label class="sr-only" for="inlineFormInputName2">Name</label>
+                  <input type="text" class="form-control mb-2 mr-sm-2 pr-5" id="inlineFormInputName2" placeholder="Giới tính">              
+                  <button type="submit" class="btn btn-secondary mb-2" style="background-color: #203149;font-size: 13px;
+    border-color: #203149;">Thay đổi</button>
+                </form>
+              </div>
+              <div>
+                <form class="form-inline">
+                  <label class="sr-only" for="inlineFormInputName2">Name</label>
+                  <input type="text" class="form-control mb-2 mr-sm-2 pr-5" id="inlineFormInputName2" placeholder="Địa chỉ">              
+                  <button type="submit" class="btn btn-secondary mb-2" style="background-color: #203149;font-size: 13px;
+    border-color: #203149;">Thay đổi</button>
+                </form>
+              </div>
+
+              
             </div>
           </div>
 
@@ -136,10 +156,26 @@
               <div>Bảo vệ tài khoản</div>
             </div>
             <div class="col-sm-6">
-              <div>Đổi mật khẩu</div>
-              <div>Đổi CMND</div>
-              <div>Đổi Gmail</div>
-              <div>Đổi SDT</div>
+              <div>
+                <form class="form-inline">
+                  <label class="sr-only" for="inlineFormInputName2">Name</label>
+                  <input type="text" class="form-control mb-2 mr-sm-2 pr-5" id="inlineFormInputName2" placeholder="Nhập mật khẩu cũ"> 
+                </form>
+              </div>
+              <div>
+                <form class="form-inline">
+                  <label class="sr-only" for="inlineFormInputName2">Name</label>
+                  <input type="text" class="form-control mb-2 mr-sm-2 pr-5" id="inlineFormInputName2" placeholder="Nhập mật khẩu mới">
+                </form>
+              </div>
+              <div>
+                <form class="form-inline">
+                  <label class="sr-only" for="inlineFormInputName2">Name</label>
+                  <input type="text" class="form-control mb-2 mr-sm-2 pr-5" id="inlineFormInputName2" placeholder="Nhập lại mật khẩu">
+                  <button type="submit" class="btn btn-secondary mb-2" style="background-color: #203149;font-size: 13px;
+    border-color: #203149;">Đổi mật khẩu</button>
+                </form>
+              </div>
             </div>
 
           </div>
@@ -150,8 +186,22 @@
               <div>Tài khoản kết nối</div>
             </div>
             <div class="col-sm-6">
-              <div>Facebook</div>
-              <div>Gmail</div>      
+              <div>
+                <form class="form-inline">
+                  <label class="sr-only" for="inlineFormInputName2">Name</label>
+                  <input type="text" class="form-control mb-2 mr-sm-2 pr-5" id="inlineFormInputName2" placeholder="Facebook">              
+                  <button type="submit" class="btn btn-secondary mb-2" style="background-color: #203149;font-size: 13px;
+    border-color: #203149;">Thay đổi</button>
+                </form>
+              </div>
+              <div>
+                <form class="form-inline">
+                  <label class="sr-only" for="inlineFormInputName2">Name</label>
+                  <input type="text" class="form-control mb-2 mr-sm-2 pr-5" id="inlineFormInputName2" placeholder="Gmail">              
+                  <button type="submit" class="btn btn-secondary mb-2" style="background-color: #203149;font-size: 13px;
+    border-color: #203149;">Thay đổi</button>
+                </form>
+              </div>      
             </div>
           </div>
 

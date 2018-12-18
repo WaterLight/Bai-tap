@@ -4,13 +4,8 @@
 ?>
     
     <link rel="stylesheet" href="./css/style-header.css">
-    <link rel="stylesheet" href="./css/music-content.css">
+    <link rel="stylesheet" href="./css/index-content.css">
     <link rel="stylesheet" href="./css/style-footer.css">
-    <!-- Audio Player CSS & Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="js/mediaelement-and-player.min.js"></script>
-    <link rel="stylesheet" href="css/style.css" media="screen">
-    <!-- end Audio Player CSS & Scripts -->
     
     <title>Trang chủ</title>
   </head>
@@ -27,8 +22,8 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <form class="form-inline my-2 my-lg-0 " action="index.php" method="post">
-        <input class="form-control mr-sm-2" type="search" placeholder="Tìm" aria-label="Search">
+      <form class="form-inline my-2 my-lg-0 " action="mylist.php" method="post">
+        <input class="form-control mr-sm-2" type="search" placeholder="Tìm" aria-label="Search" name="timkiem">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
         name="ok">Tìm kiếm</button>
       </form>
@@ -38,7 +33,7 @@
         <!-- Image and text -->
         <nav class="navbar navbar-dark" style="background-color: #181412;">
 
-        <div class="navbar-brand ml-4 mr-3 d-flex" style="" href="#">
+          <div class="navbar-brand ml-4 mr-3 d-flex" style="" href="#">
             <span class="" style=" color: #9befe0;margin-top: 7px;">
               <i class="fas fa-circle"></i>
             </span>
@@ -51,10 +46,10 @@
                 <a class="dropdown-item" href="#">HipHop</a>
                 <a class="dropdown-item" href="#">Rock</a>
                 <a class="dropdown-item" href="#">Balad</a>
-              </div> 
-            </div>           
+              </div>
+            </div>
           </div>
-                  
+
           <a class="navbar-brand mx-4" href="#">
             <span class="mr-3" style=" color: #fae639;">
               <i class="fas fa-circle "></i>
@@ -65,164 +60,121 @@
           <?php 
             if(isset($_SESSION["taikhoan"]))
             {
-                echo"<a class='navbar-brand mx-4' href='./login.php'>";
-                  echo"<span class='mr-3' style=' color: #f573a0;'>";
-                    echo"<i class='fas fa-circle'>"; 
-                    echo"</i>";
-                  echo"</span>";
-                  echo "PlayList";
-                echo"</a>";
-              echo "</nav>";
-              echo "</div>";
-
-              echo "<div class='info-user'>";
-                echo "<div class='dropdown' style='background-color: #181412;'>";
-                  echo "<button class= 'btn btn-secondary dropdown-toggle abc' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
-                  echo $_SESSION["taikhoan"]." ";
-                  echo "</button>" ;
-
-                  echo "<div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>";
-                    echo "<a class='dropdown-item' href='profile.php'>Thông tin cá nhân</a>";
-                    echo "<a class='dropdown-item' href='logout.php'>Nhạc yêu thích</a>";
-                    echo "<a class='dropdown-item' href='logout.php'>Playlist của tôi</a>";
-                    echo "<a class='dropdown-item' href='logout.php'>Nghe gần đây</a>";
-                    echo "<a class='dropdown-item' href='logout.php'>Đăng xuất</a>";
-                  echo "</div>";
-                echo "<div>";   
-              echo "</div>";
-            }
+          ?>    
+                <a class='navbar-brand mx-4' href='mylist.php'>
+                  <span class='mr-3' style=' color: #f573a0;'>
+                    <i class='fas fa-circle'> 
+                    </i>
+                  </span>
+                  MyList
+                </a>
+              </nav>
+              </div>
+              <div class='info-user'>
+                <div class='dropdown' style='background-color: #181412;'>
+                  <button class= 'btn btn-secondary dropdown-toggle abc' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                 <?php echo $_SESSION["taikhoan"]." "; ?> 
+                  </button>
+                  <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+                    <a class='dropdown-item' href='profile.php'>Thông tin cá nhân</a>
+                    <a class='dropdown-item' href='#'>Nhạc yêu thích</a>
+                    <a class='dropdown-item' href='#'>Playlist của tôi</a>
+                    <a class='dropdown-item' href='#'>Nghe gần đây</a>
+                    <a class='dropdown-item' href='logout.php'>Đăng xuất</a>
+                  </div>
+                <div>  
+              </div>
+          <?php  
+            }            
             else
-            {             
-              echo"<a class='navbar-brand mx-4' href='./login.php'>";
-                echo"<span class='mr-3' style=' color: #f573a0;'>";
-                  echo"<i class='fas fa-circle'>"; 
-                  echo"</i>";
-                echo"</span>";
-                echo "Đăng nhập";
-              echo"</a>";
-              echo "</nav>";
-              echo "</div>";
+            { 
+          ?>                
+              <a class='navbar-brand mx-4' href='./login.php'>
+                <span class='mr-3' style=' color: #f573a0;'>
+                  <i class='fas fa-circle'>
+                  </i>
+                </span>
+                Đăng nhập
+              </a>
+              </nav>
+              </div>
+          <?php    
             }      
           ?>
   </nav>
 
   <!-- ======================== Content ======================== -->
-    <div class="body">
-      <div style="background: rgb(0,0,0);background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 0%);width: 100%;height: 100%;">
-      <div style="height: 20px; width: 100%"></div>
-      <div class="container">
-      <div class="row">
-        <div class="col-sm-9">
-          <div class="player mb-2">
-            <div style="background: rgb(0,0,0);background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 0%);width: 100%;height: 100%;">
-
-            <div class="audio-player">
-              <h1>Demo - Preview Song</h1>
-                <img class="cover" src="./image/slider.jpg" alt="">
-                <audio id="audio-player" src="./mp3/05.mp3" type="audio/mp3" controls="controls"></audio>
+  <div class="body">
+    <div style="background: rgb(0,0,0);background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 0%);width: 100%;height: 100%;">
+    <div style="height: 20px; width: 100%"></div>    
+      <div class="container text-center">
+      
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" style=" height: 350px;">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="./image/slider.jpg" border="0"  alt="First slide">
             </div>
-
+            <div class="carousel-item">
+              <img class="d-block w-100" src="./image/slider.jpg" border="0"  alt="Second slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="./image/slider.jpg" border="0"  alt="Third slide">
             </div>
           </div>
-
-          <div class="viewlist" id="style-1">
-            <ul class="playlist">             
-
-                <?php  
-                  if (isset($_REQUEST['ok'])) 
-                  {
-                    // Gán hàm addslashes để chống sql injection
-                    $timkiem = addslashes($_GET['timkiem']);
-   
-                    // Nếu $timkiem rỗng thì báo lỗi, tức là người dùng chưa nhập liệu mà đã nhấn submit.
-                    if (empty($timkiem)) 
-                    {
-                      echo "<p style= 'color:red;'>* Dữ liệu tìm kiếm không được để trống</p>";
-                    } 
-                    else
-                    {
-                      // Dùng câu lênh like trong sql và sứ dụng toán tử % của php để tìm kiếm dữ liệu chính xác hơn.
-                      $sql = "SELECT * FROM baihat WHERE tenbh LIKE '%$timkiem%' OR tencs LIKE '%$timkiem%' OR tenns LIKE '%$timkiem%' OR quocgia LIKE '%$timkiem%' OR theloai LIKE '%$theloai%' ";
-   
-                      // Kết nối sql
-                      require("config/connect.php");
-                      // Thực thi câu truy vấn
-                      $kq = mysqli_query($conn,$sql);
-   
-                      // Đếm số dòng trả về trong sql.
-                      $num = mysqli_num_rows($kq);
-   
-                      // Nếu có kết quả thì hiển thị, ngược lại thì thông báo không tìm thấy kết quả
-                      if ($num > 0 && $timkiem != "") 
-                      {
-                        // Dùng $num để đếm số dòng trả về.
-                        echo "<p style='color:#0000FF;'>$num kết quả trả về với từ khóa <b>$timkiem</b></p>";
-                        $dem=1;
-                        while ($data = mysqli_fetch_assoc($kq))
-                        {
-                          echo"<li audiourl='$data[url]' cover='./slider.jpg' artist='Alan Walked'>";
-                            echo"<div class='bai-hat-tuan'>";
-
-                              echo"<div class='number'>$dem</div>";
-                              echo"<div class='info'>";
-                                echo"<div><a id='id-name' href='#'>$data[tenbh]</a></div>";
-                                echo"<div class='singer'><a id='id-singer' href='#'>$data[tencs]</a></div>";
-                              echo"</div>";
-                              echo"<div><i class='fas fa-plus'></i></div> ";          
-
-                            echo"</div>";
-                          echo"</li>";
-                          $dem++;
-                        }
-                      }                 
-                      else 
-                      {
-                        echo"<p style='color:red;'>* Không tìm thấy kết quả!;</p>";
-                      } 
-
-                      //Đóng kết nối với CSDL
-                      mysqli_close($conn);
-                    }
-                  }
-                  else
-                  {
-                    //Mở kết nối với CSDL
-                    require("config/connect.php");
-                    //Thực hiện truy vấn
-                    $sql = "SELECT * FROM baihat WHERE capnhat = 1";
-                    $kq = mysqli_query($conn,$sql);
-                    
-                    $dem=1;  
-                    while ($data = mysqli_fetch_assoc($kq)) 
-                    {
-                      echo"<li audiourl='Faded' cover='./slider.jpg' artist='Alan Walked'>";
-                          echo"<div class='bai-hat-tuan'>";
-
-                            echo"<div class='number mr-3'>$dem</div>";
-                            echo"<div class='info'>";
-                              echo"<div><a id='id-name' href='#'>$data[tenbh]</a></div>";
-                              echo"<div class='singer'><a id='id-singer' href='#'>$data[tencs]</a></div>";
-                            echo"</div>";
-                            echo"<div><i class='fas fa-heart mr-4'></i> <i class='fas fa-plus mr-4'></i> <i class='fas fa-arrow-down'></i> </div> ";          
-
-                          echo"</div>";
-                        echo"</li>";
-                        $dem++;
-                    }
-                    mysqli_close($conn);
-                  }
-              ?>  
-            </ul>
-            <div class="force-overflow"></div>
-          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-        <div class="col-sm-3">
-          abc
+        
+        <div class="row text-left mt-4">
+          <div class="col-sm-9">
+ <?php 
+    require("config/connect.php");
+    $mabh = $_GET['mabh'];
+    // Câu truy vấn
+    $sql = "SELECT * FROM baihat WHERE mabh = '". $mabh ."'";
+    // Thực hiện câu truy vấn, hàm này truyền hai tham số vào là biến kết nối và câu truy vấn
+    $kq = mysqli_query($conn, $sql);
+    // Nếu thực thi không được thì thông báo truy vấn bị sai    
+    if (!$kq){
+        die ('Câu truy vấn bị sai');
+    }
+        
+    $bhhientai = mysqli_fetch_array($kq);
+  ?>  
+  
+  <label style="color: #FF66FF;">Tên bài hát : <?php echo $bhhientai['tenbh']; ?></label> <br />
+
+  <audio controls>
+      <source src="<?php echo $bhhientai['url']; ?>" type="audio/mpeg">
+  </audio>
+  <br />
+
+  <?php
+    // Xóa kết quả khỏi bộ nhớ
+    mysqli_free_result($kq);
+     
+    // Sau khi thực thi xong thì ngắt kết nối database
+    mysqli_close($conn);
+  ?>    
+
+          </div> 
+
         </div>
-      </div>
-      </div>
-      <div style="height: 20px; width: 100%"></div>s    
+
     </div>
+  </div>
+  </div>
 
 
   <!-- ======================== Footer ======================== -->
@@ -232,6 +184,7 @@
       <a class="navbar-brand ml-5" style="color: #fff; opacity: .4; font-size: .8em;" href="">
         Copyright 2018 Personal NP
       </a>
+      
 
       <div class="collapse navbar-collapse footer-left " id="navbarSupportedContent">
         <!-- Image and text -->
@@ -254,23 +207,15 @@
     <a href="./index.php"><i class="fas fa-home fa-3x " style="color: #3ea24c;"></i></a>
   </div>
 
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script>
-      $(document).ready(function() {
-          $('#audio-player').mediaelementplayer({
-              alwaysShowControls: true,
-              features: ['playpause','volume','progress'],
-              audioVolume: 'horizontal',
-              audioWidth: 825,
-              audioHeight: 290
-          });
-      });
-    </script>
+    <script src="./js/jquery-3.3.1.slim.min.js"></script>
+    
     
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/main.js"></script>
-    <script src="./js/content.js"></script>
   </body>
 </html>
