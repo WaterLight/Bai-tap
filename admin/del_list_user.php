@@ -1,9 +1,9 @@
 <?php 
-	$matv = $_GET["matv"];
-	require("../config/connect.php");
-	$sql = "DELETE FROM thanhvien WHERE matv = $matv";
-	$kq = mysqli_query($conn,$sql);
-	mysqli_close($conn);
+	include("../models/m_user.php");
+	$userid = addslashes(stripslashes($_GET["userid"]));
+	$user = new user();
+	$user->m_del_user($userid);
+	$user->disconnect();
 	ob_start(); 
 	header('Location: list_user.php');
 	ob_end_flush(); 

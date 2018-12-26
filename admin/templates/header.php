@@ -4,9 +4,9 @@
 	<meta charset="UTF-8">
 	<title>Trang quản lý</title>
 
-	<link rel="stylesheet" href="../css/all.min.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../css/style-admin.css">
+	<link rel="stylesheet" href="../public/core/css/all.min.css">
+    <link rel="stylesheet" href="../public/core/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../public/core/css/style-admin.css">
 
 	<script language="javascript">
 		function show_confirm() {

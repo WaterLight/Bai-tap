@@ -1,12 +1,10 @@
 <?php 
-	require("../config/connect.php");
-	
-	$mabh = $_GET["mabh"];
-
-	$sql = "DELETE FROM baihat WHERE mabh = $mabh";
-	$kq = mysqli_query($conn,$sql);
-	mysqli_close($conn);
+	include("../models/m_music.php");
+	$id = addslashes(stripslashes($_GET["id"]));
+	$music = new music();
+	$music->m_del_music($id);
+	$music->disconnect();
 	ob_start(); 
 	header('Location: list_music.php');
-	ob_end_flush(); 	
+	ob_end_flush(); 
 ?>

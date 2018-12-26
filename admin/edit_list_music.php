@@ -1,36 +1,35 @@
 <?php 
 	session_start();
-    if($_SESSION["capbac"] == 1)
+    if($_SESSION["level"] == 2)
     {
     	require("templates/header.php");
-
-		$mabh = addslashes(stripslashes($_GET["mabh"]));
+    	include("../models/m_music.php");
+		$id = addslashes(stripslashes($_GET["id"]));
 
 		if(isset($_POST["ok"]))
 		{
-			$tenbh = addslashes(stripslashes($_POST["tenbh"]));
-			$tencs = addslashes(stripslashes($_POST["tencs"]));
-			$tenns = addslashes(stripslashes($_POST["tenns"]));
-			$url = addslashes(stripslashes($_POST["url"]));
+			$song = addslashes(stripslashes($_POST["song"]));
+			$singer = addslashes(stripslashes($_POST["singer"]));
+			$musician = addslashes(stripslashes($_POST["musician"]));
+			$country = addslashes(stripslashes($_POST["country"]));
+			$style = addslashes(stripslashes($_POST["style"]));
+			$new = addslashes(stripslashes($_POST["new"]));
+			$best = addslashes(stripslashes($_POST["best"]));
+			$topten = addslashes(stripslashes($_POST["topten"]));
 
-			if(isset($tenbh) && isset($tencs) && isset($tenns) && isset($url))
+			if(isset($song) && isset($singer) && isset($musician) && isset($country) && isset($style) && isset($new) && isset($best) && isset($topten))
 			{
-				require("../config/connect.php");
-				$sql = "UPDATE baihat SET tenbh = $tenbh, tencs = $tencs, tenns = $tenns, url = $url WHERE mabh = $mabh";
-				mysqli_query($conn,$sql);
-				mysqli_close($conn);
-
-				ob_start(); 
+				$music = new music();
+				$music->m_edit_music($id, $song, $singer, $musician, $country, $style, $new, $best, $topten);
+				$music->disconnect();
+				ob_start();
 				header('Location: list_music.php');
 				ob_end_flush();
 			}
 		}
 
-		//Kết nối CSDL
-		require("../config/connect.php");
-		$sql = "SELECT * FROM baihat WHERE mabh = $mabh";
-		$kq = mysqli_query($conn,$sql);
-		$data = mysqli_fetch_assoc($kq); //Mảng ko có thứ tự
+		$music = new music();
+		$row = $music->m_get_music($id);
     }
 	else
 	{		
@@ -38,32 +37,8 @@
 		header('Location: ../index.php');
 		ob_end_flush();
 	}					   								  	
-?>	
-
-	<form action="edit_list_music.php?mabh=<?php echo $mabh; ?>" method="post">	
-		<h2>Sửa thông tin bài hát</h2>
-		<div>
-			<div>
-				<input style="height: 24px; width: 300px;" type="text" name="tenbh" placeholder="Tên bài hát" value="<?php echo $data['tenbh']; ?>" required>
-				<div style="color: #FF33FF;">Tên bài hát</div>
-			</div>
-			<div>
-				<input style="height: 24px; width: 300px;" type="text" name="tencs" placeholder="Tên ca sĩ" value="<?php echo $data['tencs']; ?>" required>
-				<div style="color: #FF33FF;">Tên ca sĩ</div>
-			</div>
-			<div>
-				<input style="height: 24px; width: 300px;" type="text" name="tenns" placeholder="Tên nhạc sĩ" value="<?php echo $data['tenns']; ?>" required>
-				<div style="color: #FF33FF;">Tên nhạc sĩ</div>
-			</div>
-			<div>
-				<input style="height: 24px; width: 300px;" type="text" name="url" placeholder="Đường dẫn file" value="<?php echo $data['url']; ?>" required>
-				<div style="color: #FF33FF;">Đường dẫn file</div>
-			</div>
-				
-		<button style="height: 30px;" type="submit" name="ok">Sửa</button>
-	</form>
 	
-<?php  
-	mysqli_close($conn);
+	require("templates/table_edit_music.php"); 
+	$music->disconnect();
 	require("templates/footer.php");
 ?>

@@ -1,44 +1,40 @@
 <?php
 	session_start();
-    if($_SESSION["capbac"] == 1)
+    if($_SESSION["level"] == 2)
     {
     	require("templates/header.php");
 
-		$loi = array();
-		$loi["them"] = NULL;
+		$err = array();
+		$err["add"] = NULL;
 
 		if(isset($_POST["ok"]))	
 		{
 			//stripslashes loại bỏ ký tự \ trước dấu '
-			$tenbh = addslashes(stripslashes($_POST["tenbh"]));
-			$tencs = addslashes(stripslashes($_POST["tencs"]));
-			$tenns = addslashes(stripslashes($_POST["tenns"]));
-			$url = addslashes(stripslashes($_POST["url"]));
-
-			if(isset($tenbh) && isset($tencs) && isset($tenns) && isset($url))
+			$song = addslashes(stripslashes($_POST["song"]));
+			$singer = addslashes(stripslashes($_POST["singer"]));
+			$musician = addslashes(stripslashes($_POST["musician"]));
+			$country = addslashes(stripslashes($_POST["country"]));
+			$style = addslashes(stripslashes($_POST["style"]));
+			$new = addslashes(stripslashes($_POST["new"]));
+			$best = addslashes(stripslashes($_POST["best"]));
+			$topten = addslashes(stripslashes($_POST["topten"]));
+			$img = addslashes(stripslashes($_POST["img"]));
+			$mp3 = addslashes(stripslashes($_POST["mp3"]));
+			
+			if(isset($song) && isset($singer) && isset($musician) && isset($country) && isset($style) && isset($new) && isset($best) && isset($topten) && isset($img)&& isset($mp3))
 			{
-				require("../config/connect.php");
-				$sql = "SELECT * FROM baihat WHERE tenbh = '$tenbh'";
-				$kt = mysqli_query($conn,$sql);
-				if(mysqli_num_rows($kt)>0)
+				include("../models/m_music.php");
+				$music = new music();
+				$result = $music->m_add_music($song, $singer, $musician, $country, $style, $new, $best, $topten, $img, $mp3);	
+				if($result == 'fail')
 				{
-					$loi["them"] = "* Tên bài hát đã tồn tại";
+					$err["add"] = "* Tên bài hát đã tồn tại";					
 				}
 				else
 				{
-					$sql = "INSERT INTO baihat(tenbh,
-										   tencs,
-										   tenns,
-										   url)	VALUES	
-										   ('$tenbh',
-										   '$tencs',
-										   '$tenns',
-										   '$url')";
-
-					mysqli_query($conn,$sql);
-					$loi["them"] = "* Thêm bài hát thành công";					   	
-				}					
-				mysqli_close($conn);						   								   
+					$err["add"] = "* Thêm bài hát thành công";
+				}
+				$music->disconnect();
 			}
 		}	
     } 
@@ -48,33 +44,13 @@
 		header('Location: ../index.php');
 		ob_end_flush();
 	}
+	
+	require("templates/table_add_music.php");
 ?>	
-	<form action="add_list_music.php" method="post">	
-		<h2>Thêm bài hát</h2>
-		<div>
-			<div>
-				<input style="height: 24px; width: 300px;" type="text" name="tenbh" placeholder="Tên bài hát" value required>
-				<div></div>
-			</div>
-			<div>
-				<input style="height: 24px; width: 300px;" type="text" name="tencs" placeholder="Tên ca sĩ" value required>
-				<div></div>
-			</div>
-			<div>
-				<input style="height: 24px; width: 300px;" type="text" name="tenns" placeholder="Tên nhạc sĩ" value required>
-				<div></div>
-			</div>
-			<div>
-				<input style="height: 24px; width: 300px;" type="text" name="url" placeholder="Đường dẫn file" value required>
-				<div></div>
-			</div>
-				
-		<button style="height: 30px;" type="submit" name="ok">Thêm</button>
-	</form>
-
+	
 	<div style="width: 500px; margin: 30px; text-align: center; color: red;">
 		<?php  
-			echo $loi["them"];
+			echo $err["add"];
 		?>
 	</div>
 
